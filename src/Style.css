@@ -1,0 +1,76 @@
+.main {
+  width: 630px;
+  margin-top: 25px;
+  padding: 10px 15px;
+  border: 2px solid black;
+}
+.degree-top {
+  font-size: 25px;
+  padding-top: 7px;
+  padding-left: 0px;
+  padding-right: 170px;
+}
+.weather-img {
+  display: block;
+  padding-right: 5px;
+  padding-left: 170px;
+}
+#locationbtn {
+  font-size: 10px;
+}
+.mid-01 {
+  padding-top: 80px;
+}
+.location-city {
+  font-size: 20px;
+  padding-left: 15px;
+}
+.time {
+  font-size: 20px;
+  padding-left: 165px;
+  padding-right: 20px;
+}
+.country {
+  font-size: 13px;
+  padding-left: 75px;
+  padding-right: 320px;
+}
+.date {
+  font-size: 13px;
+  padding-left: 110px;
+}
+.days {
+  padding-bottom: 10px;
+}
+.day-part {
+  float: left;
+  padding-top: 15px;
+  padding-bottom: 25px;
+  width: 16.5%;
+  border: 1px dotted black;
+}
+.day-name {
+  text-align: center;
+}
+.day-img {
+  display: block;
+  margin: 0 auto;
+  max-height: 50px;
+  max-width: 50px;
+}
+.day-tepm {
+  text-align: center;
+}
+.search {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.searchbox {
+  border-radius: 2px;
+  border: none;
+  box-shadow: 0 2px 2px 0 gray;
+  height: 40px;
+  outline: 0;
+  padding: 10px;
+  width: 300px;
+}
