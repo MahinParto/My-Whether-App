@@ -1,46 +1,77 @@
+ul {
+  list-style-type: none;
+}
 .main {
   width: 630px;
-  margin-top: 25px;
+  margin: 20px auto;
   padding: 10px 15px;
   border: 2px solid black;
+  font-family: "Roboto", sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
+}
+.top {
+  margin-top: 20px;
 }
 .degree-top {
-  font-size: 25px;
-  padding-top: 7px;
-  padding-left: 0px;
-  padding-right: 170px;
-}
-.weather-img {
-  display: block;
-  padding-right: 5px;
-  padding-left: 170px;
+  text-align: center;
+  font-size: 30px;
+  color: rgb(41 0 177);
 }
 #locationbtn {
-  font-size: 10px;
+  font-size: 15px;
+  margin-left: 70px;
+  margin-right: 0px;
+}
+.centericon {
+  max-width: 75px;
+  max-height: 75px;
 }
 .mid-01 {
-  padding-top: 80px;
+  padding-top: 1px;
+  padding-bottom: 1px;
 }
 .location-city {
-  font-size: 20px;
+  font-size: 35px;
   padding-left: 15px;
 }
 .time {
-  font-size: 20px;
-  padding-left: 165px;
-  padding-right: 20px;
+  font-size: 30px;
 }
 .country {
-  font-size: 13px;
-  padding-left: 75px;
-  padding-right: 320px;
+  font-size: 12px;
+  margin-left: 10px;
 }
 .date {
-  font-size: 13px;
-  padding-left: 110px;
+  font-size: 15px;
+}
+.whetherStatus {
+  font-size: 30px;
+}
+.humidity {
+  font-size: 15px;
+}
+.humtitle {
+  font-weight: bold;
+  color: black;
+}
+.humpercent {
+  font-weight: bold;
+  color: rgb(41 0 177);
+}
+.wind {
+  font-size: 15px;
+}
+.windtitle {
+  font-weight: bold;
+  color: black;
+}
+.windnumb {
+  font-weight: bold;
+  color: rgb(41 0 177);
 }
 .days {
-  padding-bottom: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
 .day-part {
   float: left;
@@ -51,21 +82,32 @@
 }
 .day-name {
   text-align: center;
+  font-size: 15px;
 }
 .day-img {
   display: block;
   margin: 0 auto;
-  max-height: 50px;
-  max-width: 50px;
+  max-height: 65px;
+  max-width: 70px;
 }
 .day-tepm {
   text-align: center;
 }
+.tempmax {
+  font-size: 15px;
+  font-weight: bold;
+  color: rgb(41 0 177);
+}
+.tempmin {
+  font-size: 15px;
+  font-weight: bold;
+  color: rgb(125, 133, 221);
+}
 .search {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  text-align: center;
 }
 .searchbox {
+  margin: 0 auto;
   border-radius: 2px;
   border: none;
   box-shadow: 0 2px 2px 0 gray;
@@ -73,4 +115,13 @@
   outline: 0;
   padding: 10px;
   width: 300px;
+}
+.surceLine {
+  margin-left: 335px;
+  margin-top: -15px;
+}
+
+.opensurce {
+  text-align: left;
+  font-size: 15px;
 }

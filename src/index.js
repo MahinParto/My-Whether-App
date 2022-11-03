@@ -55,67 +55,102 @@ function newDate(date) {
 liveDate.innerHTML = newDate();
 
 //################### Search Value + Show Value ################
-function search(event) {
-  event.preventDefault();
-  let searchBoxText = document.querySelector("#search-text-input");
-  let cityName = document.querySelector(".location-city");
 
-  function showSearch(response) {
-    let showsearchtemp = document.querySelector(".degree-top");
-    let showsearchcity = document.querySelector(".location-city");
-    let showsearchcountry = document.querySelector(".country");
-    let searchtemperature = Math.round(response.data.main.temp);
-    showsearchtemp.innerHTML = `${searchtemperature}°`;
-    showsearchcity.innerHTML = `${response.data.name}`;
-    showsearchcountry.innerHTML = `${response.data.sys.country}`;
-  }
+function showSearch(response) {
+  let showsearchtemp = document.querySelector(".degree-top");
+  let showsearchcity = document.querySelector(".location-city");
+  let showsearchcountry = document.querySelector(".country");
+  let showsearchstatus = document.querySelector(".whetherStatus");
+  let showsearchhumidity = document.querySelector(".humpercent");
+  let showsearchwind = document.querySelector(".windnumb");
+  let searchicon = document.querySelector(".centericon");
+  let searchLociconlink =
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/";
 
-  let apiKey = "c8a77112b2faf6684bb4b21a0aa778ae";
+  celsiusTemp = response.data.temperature.current;
+
+  showsearchtemp.innerHTML = `${Math.round(celsiusTemp)}°`;
+  showsearchcity.innerHTML = `${response.data.city}`;
+  showsearchcountry.innerHTML = `${response.data.country}`;
+  showsearchstatus.innerHTML = `${response.data.condition.description}`;
+  showsearchhumidity.innerHTML = `${response.data.temperature.humidity}`;
+  showsearchwind.innerHTML = `${Math.round(response.data.wind.speed)}`;
+  searchicon.setAttribute(
+    "src",
+    `${searchLociconlink}${response.data.condition.icon}.png`
+  );
+}
+
+function search(city) {
+  let apiKey = "467056bta9bca10b1ob3b3c4101a5b4f";
   let units = "metric";
-  let city = `${searchBoxText.value}`;
-  let apiPoint = "https://api.openweathermap.org/data/2.5/weather?q=";
-  let apiUrl = `${apiPoint}${city}&appid=${apiKey}&units=${units}`;
+  let apiPoint = "https://api.shecodes.io/weather/v1/current?query=";
+  let apiUrl = `${apiPoint}${city}&key=${apiKey}&units=${units}`;
 
   axios.get(apiUrl).then(showSearch);
 }
+
+function getSubmit(event) {
+  event.preventDefault();
+  let searchBoxText = document.querySelector("#search-text-input");
+  search(searchBoxText.value);
+}
+
 let form = document.querySelector(".search-form");
-form.addEventListener("submit", search);
+form.addEventListener("submit", getSubmit);
+
+search("Bandar-e Anzali");
 
 //######################### Degree ###############################
-// function degreeC(event) {
-//   event.preventDefault();
-//   let degree1 = document.querySelector(".degree-top");
-//   degree1.innerHTML = "19";
-// }
-// let cantiDegree = document.querySelector("#btnradio1");
-// cantiDegree.addEventListener("click", degreeC);
+function displayCelsius(event) {
+  event.preventDefault();
+  let cecisusTempetuer = document.querySelector(".degree-top");
+  cecisusTempetuer.innerHTML = `${Math.round(celsiusTemp)}°`;
+}
+let cantiDegree = document.querySelector("#btnradio1");
+cantiDegree.addEventListener("click", displayCelsius);
 
-// function degreeF(event) {
-//   event.preventDefault();
-//   let degree2 = document.querySelector(".degree-top");
-//   degree2.innerHTML = "66";
-// }
-// let farenDegree = document.querySelector("#btnradio3");
-// farenDegree.addEventListener("click", degreeF);
+function displayFarenhit(event) {
+  event.preventDefault();
+  let farenhitetemp = document.querySelector(".degree-top");
+  farenhitetemp.innerHTML = `${Math.round((celsiusTemp * 9) / 5 + 32)}°`;
+}
+let farenDegree = document.querySelector("#btnradio3");
+farenDegree.addEventListener("click", displayFarenhit);
 
-//########### weather API + Weather Live ##########################
+let celsiusTemp = null;
+
+//########### Current Location  ##########################
 
 function btnLocation(event) {
   function showWeather(response) {
     let showdegree = document.querySelector(".degree-top");
     let locationname = document.querySelector(".location-city");
     let country = document.querySelector(".country");
-    let temperature = Math.round(response.data.main.temp);
+    let temperature = Math.round(response.data.temperature.current);
+    let showLocstatus = document.querySelector(".whetherStatus");
+    let showLochumidity = document.querySelector(".humpercent");
+    let showLochwind = document.querySelector(".windnumb");
+    let showLocicon = document.querySelector(".centericon");
+    let showLociconlink =
+      "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/";
     showdegree.innerHTML = `${temperature}°`;
-    locationname.innerHTML = `${response.data.name}`;
-    country.innerHTML = `${response.data.sys.country}`;
+    locationname.innerHTML = `${response.data.city}`;
+    country.innerHTML = `${response.data.country}`;
+    showLocstatus.innerHTML = `${response.data.condition.description}`;
+    showLochumidity.innerHTML = `${response.data.temperature.humidity}`;
+    showLochwind.innerHTML = `${Math.round(response.data.wind.speed)}`;
+    showLocicon.setAttribute(
+      "src",
+      `${showLociconlink}${response.data.condition.icon}.png`
+    );
   }
   function findPosition(position) {
-    let apiKeey = "c8a77112b2faf6684bb4b21a0aa778ae";
+    let apiKeey = "467056bta9bca10b1ob3b3c4101a5b4f";
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
-    let apiPoint1 = "https://api.openweathermap.org/data/2.5/weather?lat=";
-    let url = `${apiPoint1}${lat}&lon=${lon}&units=metric&appid=${apiKeey}`;
+    let apiPoint1 = "https://api.shecodes.io/weather/v1/current?lon=";
+    let url = `${apiPoint1}${lon}&lat=${lat}&key=${apiKeey}&units=metric`;
     axios.get(url).then(showWeather);
   }
   navigator.geolocation.getCurrentPosition(findPosition);

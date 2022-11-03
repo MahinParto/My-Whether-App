@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- CSS only -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Roboto:wght@300&display=swap"
+      rel="stylesheet" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -21,144 +26,164 @@
   <body>
     <div class="container">
       <div class="main">
-        <!-- ######################################################
-        ###########################  top line #####################-->
+        <!--#######################  top line #####################-->
         <div class="top">
-          <span
-            class="btn-group cf-btn"
-            role="group"
-            aria-label="Basic radio toggle button group">
-            <input
-              type="radio"
-              class="btn-check"
-              name="btnradio"
-              id="btnradio1"
-              autocomplete="off"
-              checked />
-            <label class="btn btn-outline-primary" for="btnradio1">C</label>
+          <div class="row">
+            <div class="col-3">
+              <span
+                class="btn-group"
+                role="group"
+                aria-label="Basic radio toggle button group"
+                id="bothbtn">
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="btnradio"
+                  id="btnradio1"
+                  autocomplete="off"
+                  checked />
+                <label class="btn btn-outline-primary" for="btnradio1">C</label>
 
-            <input
-              type="radio"
-              class="btn-check"
-              name="btnradio"
-              id="btnradio3"
-              autocomplete="off" />
-            <label class="btn btn-outline-primary" for="btnradio3">F</label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="btnradio"
+                  id="btnradio3"
+                  autocomplete="off" />
+                <label class="btn btn-outline-primary" for="btnradio3">F</label>
+              </span>
+            </div>
 
-            <img
-              class="weather-img"
-              src="media/thunderstorms.png"
-              alt="thunderstorms" />
-            <span class="degree-top"></span>
-
-            <button
-              type="button"
-              class="btn btn-outline-success"
-              id="locationbtn">
-              Current Location
-            </button>
-          </span>
+            <div class="col-6 text-center">
+              <ul>
+                <li>
+                  <span class="location-city"></span>
+                  <span class="country"></span>
+                </li>
+                <li>
+                  <span><img class="centericon" src="" /></span>
+                </li>
+                <li>
+                  <div class="degree-top"></div>
+                </li>
+              </ul>
+            </div>
+            <div class="col-3">
+              <button
+                type="button"
+                class="btn btn-outline-success"
+                style="
+                  --bs-btn-padding-y: 0.4rem;
+                  --bs-btn-padding-x: 1.5rem;
+                  --bs-btn-font-size: 0.85rem;
+                "
+                id="locationbtn">
+                📍
+              </button>
+            </div>
+          </div>
         </div>
-        <!-- ######################################################
-         ##################  Location & timd-date #################-->
+        <!-- #################detail & timd-date ##################-->
         <div class="mid-01">
           <div class="row">
             <div class="col-6">
-              <span class="location-city"></span>
+              <ul>
+                <li class="whetherStatus"></li>
+                <li class="humidity">
+                  <span class="humtitle">Humidity:</span
+                  ><span class="humpercent"></span>%
+                </li>
+                <li class="wind">
+                  <spna class="windtitle">Wind:</spna
+                  ><span class="windnumb"></span>Km/h
+                </li>
+              </ul>
             </div>
 
-            <div class="col-6">
-              <span class="time"></span>
+            <div class="col-6 text-center">
+              <ul>
+                <li><span class="time"></span></li>
+                <li><span class="date"></span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!--##################  day weather ########################-->
+        <div class="days">
+          <div class="day-part">
+            <div class="day-name">Thu</div>
+            <img class="day-img" src="" alt="" />
+            <div class="day-tepm">
+              <span class="tempmax">33°</span> <span class="tempmin"> 21°</span>
             </div>
           </div>
 
+          <div class="day-part">
+            <div class="day-name">Fri</div>
+            <img class="day-img" src="" alt="" />
+            <div class="day-tepm">
+              <span class="tempmax">33°</span> <span class="tempmin"> 21°</span>
+            </div>
+          </div>
+
+          <div class="day-part">
+            <div class="day-name">Sat</div>
+            <img class="day-img" src="" alt="" />
+            <div class="day-tepm">
+              <span class="tempmax">33°</span> <span class="tempmin"> 21°</span>
+            </div>
+          </div>
+
+          <div class="day-part">
+            <div class="day-name">Sun</div>
+            <img class="day-img" src="" alt="" />
+            <div class="day-tepm">
+              <span class="tempmax">33°</span> <span class="tempmin"> 21°</span>
+            </div>
+          </div>
+
+          <div class="day-part">
+            <div class="day-name">Mon</div>
+            <img class="day-img" src="" alt="" />
+            <div class="day-tepm">
+              <span class="tempmax">33°</span> <span class="tempmin"> 21°</span>
+            </div>
+          </div>
+
+          <div class="day-part">
+            <div class="day-name">Tue</div>
+            <img class="day-img" src="" alt="" />
+            <div class="day-tepm">
+              <span class="tempmax">33°</span> <span class="tempmin"> 21°</span>
+            </div>
+          </div>
+        </div>
+        <!--#######################  search #######################-->
+        <div class="search">
           <div class="row">
-            <div class="col-6">
-              <span class="country"></span>
-            </div>
-
-            <div class="col-6">
-              <span class="date"></span>
-            </div>
-          </div>
-          <!-- ######################################################
-          ##################  day weather ########################-->
-          <div class="days">
-            <div class="day-part">
-              <div class="day-name">Thu</div>
-              <img
-                class="day-img"
-                src="media/partly_cloudy.jpg"
-                alt="partly_cloudy" />
-              <div class="day-tepm">33° | 21°</div>
-            </div>
-
-            <div class="day-part">
-              <div class="day-name">Fri</div>
-              <img class="day-img" src="media/rain.png" alt="rain" />
-              <div class="day-tepm">33° | 21°</div>
-            </div>
-
-            <div class="day-part">
-              <div class="day-name">Sat</div>
-              <img
-                class="day-img"
-                src="media/rain_light.png"
-                alt="rain_light" />
-              <div class="day-tepm">33° | 21°</div>
-            </div>
-
-            <div class="day-part">
-              <div class="day-name">Sun</div>
-              <img
-                class="day-img"
-                src="media/rain_s_cloudy.png"
-                alt="rain_s_cloudy" />
-              <div class="day-tepm">33° | 21°</div>
-            </div>
-
-            <div class="day-part">
-              <div class="day-name">Mon</div>
-              <img class="day-img" src="media/sunny.png" alt="sunny" />
-              <div class="day-tepm">33° | 21°</div>
-            </div>
-
-            <div class="day-part">
-              <div class="day-name">Tue</div>
-              <img
-                class="day-img"
-                src="media/sunny_s_cloudy.png"
-                alt="sunny_s_cloudy" />
-              <div class="day-tepm">33° | 21°</div>
-            </div>
-          </div>
-          <!-- ######################################################
-           #######################  search #######################-->
-          <div class="search">
-            <div class="row">
-              <div class="col text-center">
-                <form class="search-form">
-                  <input
-                    class="text searchbox"
-                    placeholder="Type your city name"
-                    id="search-text-input" />
-                  <input
-                    type="submit"
-                    value="Search"
-                    class="btn btn-success search-btn"
-                    id="search-btm" />
-                </form>
-              </div>
+            <div class="col">
+              <form class="search-form">
+                <input
+                  class="text searchbox"
+                  placeholder="Type your city name"
+                  id="search-text-input" />
+                <input
+                  type="submit"
+                  value="Search"
+                  class="btn btn-success search-btn"
+                  id="search-btm" />
+              </form>
             </div>
           </div>
         </div>
       </div>
-      <small>
-        <a href="https://github.com/MahinParto/My-Whether-App"
+      <!-- end of box -->
+      <div class="surceLine">
+        <a href="https://github.com/MahinParto/My-Whether-App" class="opensurce"
           >Open-source code
         </a>
         , by Mahin Parto
-      </small>
+      </div>
     </div>
     <script src="src/index.js"></script>
   </body>
