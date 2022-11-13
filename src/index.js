@@ -53,6 +53,51 @@ function newDate(date) {
   return day + ", " + Month + " " + dayNumb + ", " + Year;
 }
 liveDate.innerHTML = newDate();
+//######################### forrcast ##########################
+function formatday(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
+function getForcast(city) {
+  apikey = "467056bta9bca10b1ob3b3c4101a5b4f";
+  apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apikey}&units=metric`;
+  axios.get(apiUrl).then(displayForcast);
+}
+
+function displayForcast(response) {
+  let forcastDays = response.data.daily;
+  let forcastElement = document.querySelector(".forcast");
+
+  let forcastHTML = `<div class="row">`;
+  forcastDays.forEach(function (forcastDay, index) {
+    if (index > 0) {
+      forcastHTML =
+        forcastHTML +
+        ` <div class="col-2">
+            <div class="day-name">${formatday(forcastDay.time)}</div>
+              <img
+                class="day-img"
+                src="${forcastDay.condition.icon_url}"
+                alt="" />
+              <div class="day-tepm">
+                <span class="tempmax">${Math.round(
+                  forcastDay.temperature.maximum
+                )}°</span>
+                <span class="tempmin">${Math.round(
+                  forcastDay.temperature.minimum
+                )}°</span>
+            </div>
+         </div>
+        `;
+    }
+  });
+
+  forcastHTML = forcastHTML + `</div>`;
+  forcastElement.innerHTML = forcastHTML;
+}
 
 //################### Search Value + Show Value ################
 
@@ -79,6 +124,7 @@ function showSearch(response) {
     "src",
     `${searchLociconlink}${response.data.condition.icon}.png`
   );
+  getForcast(response.data.city);
 }
 
 function search(city) {
@@ -144,6 +190,8 @@ function btnLocation(event) {
       "src",
       `${showLociconlink}${response.data.condition.icon}.png`
     );
+
+    getForcast(response.data.city);
   }
   function findPosition(position) {
     let apiKeey = "467056bta9bca10b1ob3b3c4101a5b4f";
